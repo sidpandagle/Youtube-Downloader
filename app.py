@@ -19,8 +19,11 @@ def download_video():
         # vidArr = list(enumerate(videos))
         # for x in vidArr:
         #     print(x) 
-        # fname = videos[4].download().split("//")[-1]
-        fname = videos[4].download(filename=yt.title+'.mp3')
-        return send_file(fname, as_attachment=True)
+        fname = videos[4].download().split("//")[-1]
+        return send_file(fname, as_attachment=True, download_name='audio.mp3', mimetype='audio/mp3')
     except:
         return "Video download failed!"
+
+@app.route("/test", methods=["GET","POST"])
+def test():
+    return 'Test Success'
